@@ -11,6 +11,6 @@ export class InfoAction implements Action {
     }
 
     async process(params: string[], channel: Discord.TextChannel | Discord.DMChannel) {
-        await channel.send(`On September 12th my server is getting shut down and I'll stop functioning. If you want to keep me in your server you can self-host me, all of my code is at https://github.com/mikeball1289/skyweaver-card-fetcher.`);
+        await channel.send(`my souce is at https://github.com/mikeball1289/skyweaver-card-fetcher.`);
     }
 }

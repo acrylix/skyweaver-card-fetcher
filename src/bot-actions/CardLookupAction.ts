@@ -55,21 +55,11 @@ export class CardLookupAction implements Action {
                 .setTitle(`${costMap[data.cost]} ${data.name}`)
                 .setURL(data.image)
                 .setDescription(data.keywords.join(', ') + '\n' + data.description + (data.type === 'UNIT' ? ('\n' + data.stats) : ''))
-                .setFooter(this.notification())
                 .setThumbnail(`${data.image}?${randomBytes(16).toString('hex')}`)); // append a cache buster to the image)
         
         for (const message of messages) {
             channel.send(message);
         }
-    }
-
-    private notification() {
-        this.counter ++;
-        if (this.counter >= 2) {
-            this.counter = 0;
-            return `\nI'm going away soon, type !skybot for more details`;
-        }
-        return '';
     }
 }
 
