@@ -32,6 +32,7 @@ export async function generateDeckListImage(deckString: string, rawCards: CardDa
     await nodeHtmlToImage({
         output: fileName,
         html,
+        puppeteerArgs: {"args": ['--no-sandbox', '--disable-setuid-sandbox']}
     });
 
     return { url, fileName };
@@ -48,6 +49,7 @@ function parseDeckString(deckString: string): Deck | undefined {
         const cardIds = decode(deckString.slice(8))
           .toString()
           .split(",")
+          //@ts-ignore
           .map((n) => version01To02Mapping[parseInt(n)]);
         cardIds.forEach((cardId) => {
           if (typeof cardId !== "number") {
